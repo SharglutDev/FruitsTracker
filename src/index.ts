@@ -3,9 +3,14 @@
  *
  */
 
-function getRandomElement(list: string[]): string {}
+function getRandomElement(list: string[]): string {
+  let randomIndex: number = Math.floor(Math.random() * list.length);
+  return list[randomIndex];
+}
 
-function track(listVegeFruit: NodeList): boolean {}
+function track(listVegeFruit: NodeList): boolean {
+  return listVegeFruit.length >= 5;
+}
 
 /******************************************************
  * LE CODE CI-DESSOUS FAIT FONCTIONNER LA PAGE TU PEUX
@@ -15,45 +20,45 @@ function track(listVegeFruit: NodeList): boolean {}
  */
 
 const BTN_ADD =
-  document.querySelector('#add') && document.querySelector('#add');
-const BTN_REMOVE = document.querySelector('#remove');
-const LIST = document.querySelector('#fruitList');
-const MSG_SUCCESS = document.querySelector('#success');
-const MSG_FAIL = document.querySelector('#fail');
+  document.querySelector("#add") && document.querySelector("#add");
+const BTN_REMOVE = document.querySelector("#remove");
+const LIST = document.querySelector("#fruitList");
+const MSG_SUCCESS = document.querySelector("#success");
+const MSG_FAIL = document.querySelector("#fail");
 
 const listVeg = [
-  '🍏 Pomme verte',
-  '🍎 Pomme rouge',
-  '🍐 Poire',
-  '🍊 Orange',
-  '🍋 Citron',
-  '🍌 Banane',
-  '🍉 Pastèque',
-  '🍓 Fraise',
-  '🍆 Aubergine',
-  '🍅 Tomate',
-  '🥑 Avocat',
-  '🥦 Brocoli',
-  '🥒 Cocombre',
-  '🫑 Poivron',
-  '🥕 Carotte',
+  "🍏 Pomme verte",
+  "🍎 Pomme rouge",
+  "🍐 Poire",
+  "🍊 Orange",
+  "🍋 Citron",
+  "🍌 Banane",
+  "🍉 Pastèque",
+  "🍓 Fraise",
+  "🍆 Aubergine",
+  "🍅 Tomate",
+  "🥑 Avocat",
+  "🥦 Brocoli",
+  "🥒 Cocombre",
+  "🫑 Poivron",
+  "🥕 Carotte",
 ];
 
 function check() {
   if (LIST) {
     if (track(LIST.childNodes)) {
-      MSG_SUCCESS?.classList.remove('invisible');
-      MSG_FAIL?.classList.add('invisible');
+      MSG_SUCCESS?.classList.remove("invisible");
+      MSG_FAIL?.classList.add("invisible");
     } else {
-      MSG_SUCCESS?.classList.add('invisible');
-      MSG_FAIL?.classList.remove('invisible');
+      MSG_SUCCESS?.classList.add("invisible");
+      MSG_FAIL?.classList.remove("invisible");
     }
   } else {
     console.error("Error avec la list d'élément");
   }
 }
 
-BTN_ADD?.addEventListener('click', function () {
+BTN_ADD?.addEventListener("click", function () {
   if (LIST) {
     const vege = getRandomElement(listVeg);
     LIST.innerHTML += `<li class="list-group-item">${vege}</li>`;
@@ -61,7 +66,7 @@ BTN_ADD?.addEventListener('click', function () {
   }
 });
 
-BTN_REMOVE?.addEventListener('click', function () {
+BTN_REMOVE?.addEventListener("click", function () {
   if (LIST?.lastChild) {
     LIST.removeChild(LIST.lastChild);
   }
